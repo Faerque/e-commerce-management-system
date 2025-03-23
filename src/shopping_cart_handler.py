@@ -1,7 +1,10 @@
-from typing import List
+from typing import List, TYPE_CHECKING
 
 from src.product_handler import Product
-from src.users_handler import User
+
+
+if TYPE_CHECKING:
+    from src.users_handler import User
 
 
 class CartItem:
@@ -23,13 +26,13 @@ class CartItem:
         self._quantity = value
 
     @property
-    def sub_total(self) -> float:
+    def subtotal(self) -> float:
         return self.product.price * self._quantity
 
 
 class Cart:
 
-    def __init__(self, user: User):
+    def __init__(self, user: "User"):
         self.user = user,
         self.items: List[CartItem] = []  # Wallet, Pen
 

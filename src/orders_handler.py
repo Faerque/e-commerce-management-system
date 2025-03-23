@@ -1,19 +1,20 @@
 
-from src.users_handler import User
 from src.address_handler import Address
 from src.shopping_cart_handler import CartItem
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 import uuid
 
 from src.enums import OrderStatus, PaymentMethod
 
-
 from datetime import datetime
+
+if TYPE_CHECKING:
+    from src.users_handler import User
 
 
 class Order:
 
-    def __init__(self, user: User, shipping_address: Address):
+    def __init__(self, user: "User", shipping_address: Address):
         self.id = str(uuid.uuid4())
         self.user = user
         self.items: List[CartItem] = []

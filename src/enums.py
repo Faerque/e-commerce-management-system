@@ -2,14 +2,10 @@ from enum import Enum
 
 
 class UserRole(Enum):
-    """
-    Defining constant value of User Role
-    """
 
-
-CUSTOMER = 'customer'
-ADMIN = 'admin'
-VENDOR = 'vendor'
+    CUSTOMER = 'customer'
+    ADMIN = 'admin'
+    VENDOR = 'vendor'
 
 
 class OrderStatus(Enum):

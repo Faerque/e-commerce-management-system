@@ -1,12 +1,14 @@
 from src.categories_handler import Category
-from src.users_handler import User
 from src.review_handler import Review
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 import uuid
+
+if TYPE_CHECKING:
+    from src.users_handler import User
 
 
 class Product:
-    def __init__(self, name: str, descriptions: str, price: float, category: Category, vendor: User):
+    def __init__(self, name: str, descriptions: str, price: float, category: Category, vendor: "User"):
         self.id = str(uuid.uuid4())
         self.name = name
         self.descrption = descriptions

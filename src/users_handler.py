@@ -1,11 +1,14 @@
-from enums import UserRole
-from typing import List, Optional
+from src.enums import UserRole
+from typing import List, Optional, TYPE_CHECKING
 import uuid
 import hashlib
-from src.address_handler import Address
-from src.product_handler import Product
 from src.shopping_cart_handler import Cart
-from src.orders_handler import Order
+
+
+if TYPE_CHECKING:
+    from src.address_handler import Address
+    from src.product_handler import Product
+    from src.orders_handler import Order
 
 
 class User:
@@ -17,7 +20,7 @@ class User:
         self._password_hash = self._hash_password(password),
         self.role = role,
         self.addresses: List['Address'] = []
-        self.cart: List['Cart'] = []
+        self.cart: Cart = Cart(self)
         self.wishlist: List['Product'] = []
         self.orders: List[Order] = []
 
